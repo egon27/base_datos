@@ -161,7 +161,7 @@ SELECT DISTINCT(a.nombre) FROM Cliente a LEFT JOIN Factura b ON a.idcliente=b.id
 WHERE  b.preciototal > 100;
 
 -- ¿Cuántos clientes han comprado el producto 6?
-SELECT count(a.nombre) AS cantidad FROM Cliente a 
+SELECT count(distinct(a.nombre)) AS cantidad FROM Cliente a 
 LEFT JOIN Factura b 
 ON a.idcliente=b.idcliente LEFT JOIN detalle c 
 ON b.idfactura=c.idfactura LEFT JOIN producto d
