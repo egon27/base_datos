@@ -18,8 +18,8 @@ CREATE TABLE Cliente(
 CREATE TABLE Factura(
     idFactura SERIAL,
     fecha DATE,
-    subtotal INT,
-    iva INT,
+    subtotal FLOAT,
+    iva FLOAT,
     preciototal FLOAT,
     idcliente INT,
     PRIMARY KEY (idFactura),
@@ -81,7 +81,7 @@ CREATE TABLE Detalle(
 
 
 -- cliente 1 , 2 facturas / 2 y 3 productos
-    INSERT INTO factura (fecha,subtotal,iva,preciototal,idcliente) VALUES ('2020-06-17',,,,1);
+    INSERT INTO factura (fecha,subtotal,iva,preciototal,idcliente) VALUES ('2020-06-17',1158,,,1);
     INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (1059,1,1059,1,1);
     INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (99,1,99,1,6);
     
