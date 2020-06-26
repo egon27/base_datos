@@ -81,7 +81,7 @@ CREATE TABLE Detalle(
 
 
 -- cliente 1 , 2 facturas / 2 y 3 productos
-    INSERT INTO factura (fecha,subtotal,iva,preciototal,idcliente) VALUES ('2020-06-17',1158,,,1);
+    INSERT INTO factura (fecha,subtotal,iva,preciototal,idcliente) VALUES ('2020-06-17',1158,220.02,1378.02,1);
     INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (1059,1,1059,1,1);
     INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (99,1,99,1,6);
     
@@ -102,7 +102,7 @@ CREATE TABLE Detalle(
 
 -- ¿Qué cliente realizo la compra más cara?
 SELECT a.nombre FROM Cliente a LEFT JOIN Factura b ON a.idcliente=b.idcliente
-WHERE  b.preciototal = MAX(b.preciototal);
+WHERE  b.preciototal = (SELECT max(preciototal) FROM factura);
 
 -- ¿Qué cliente pago sobre 100 de monto?
 SELECT a.nombre FROM Cliente a LEFT JOIN Factura b ON a.idcliente=b.idcliente
