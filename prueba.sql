@@ -1,3 +1,5 @@
+-- SE borra database si existe
+DROP DATABASE prueba;
 
 -- creacion de base de datos
 CREATE DATABASE prueba;
