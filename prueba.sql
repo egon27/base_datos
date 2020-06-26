@@ -81,22 +81,72 @@ CREATE TABLE Detalle(
 
 
 -- cliente 1 , 2 facturas / 2 y 3 productos
+-- Factura 1
     INSERT INTO factura (fecha,subtotal,iva,preciototal,idcliente) VALUES ('2020-06-17',1158,220.02,1378.02,1);
     INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (1059,1,1059,1,1);
     INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (99,1,99,1,6);
-    
-    INSERT INTO factura (fecha,subtotal,iva,preciototal,idcliente) VALUES ('2020-06-17',,,,1);
-    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (1059,1,1059,1,1);
-    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (99,1,99,1,6);
-    
+
+ -- Factura 2   
+    INSERT INTO factura (fecha,subtotal,iva,preciototal,idcliente) VALUES ('2020-06-18',2195,417.05,2612.05,1);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (599,2,1198,2,1);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (799,1,799,2,2);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (99,1,99,2,6);
+
 -- cliente 2 , 3 facturas /3,  2 y 3 productos
-    
+
+-- Factura 3
+    INSERT INTO factura (fecha,subtotal,iva,preciototal,idcliente) VALUES ('2020-06-18',2557,485.83,3042.05,2);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (1059,1,1059,3,1);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (599,1,599,3,4);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (899,1,899,3,7);
+
+-- Factura 4
+    INSERT INTO factura (fecha,subtotal,iva,preciototal,idcliente) VALUES ('2020-06-18',898,170.62,1068.62,2);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (799,1,799,4,5);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (99,1,99,4,6);
+
+--Factura 5
+    INSERT INTO factura (fecha,subtotal,iva,preciototal,idcliente) VALUES ('2020-06-18',5579,1060.01,6639.01,2);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (1059,1,1198,5,1);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (1690,2,3380,5,2);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (1140,1,1140,5,3);
+
+
 
 -- cliente 3 , 1 facturas / 1 productos
-    
+    --Factura 6
+    INSERT INTO factura (fecha,subtotal,iva,preciototal,idcliente) VALUES ('2020-06-18',99,18.81,117.81,3);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (99,1,99,6,6);
 
 -- cliente 4 , 4 facturas / 2,3,4 y 1 productos
-    
+   
+    --Factura 7    - 2 productos
+    INSERT INTO factura (fecha,subtotal,iva,preciototal,idcliente) VALUES ('2020-06-17',3196,607.24,3803.24,4);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (899,2,1798,7,1);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (699,2,1398,7,6);
+
+
+    --Factura 8    - 3 productos
+    INSERT INTO factura (fecha,subtotal,iva,preciototal,idcliente) VALUES ('2020-06-18',2637,501.03,3138.03,4);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (1140,1,1140,8,3);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (99,1,99,8,6);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (699,2,1398,8,8);
+
+    --Factura 9    - 4 productos
+
+    INSERT INTO factura (fecha,subtotal,iva,preciototal,idcliente) VALUES ('2020-06-19',2895,550.05,3445.05,4);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (599,1,599,9,4);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (99,1,99,9,6);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (799,1,799,9,5);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (699,2,1398,9,8);
+
+    --Factura 10   - 1 producto
+    INSERT INTO factura (fecha,subtotal,iva,preciototal,idcliente) VALUES ('2020-06-18',99,18.81,117.81,4);
+    INSERT INTO detalle (precioUnitario,cantidad,valortotal,idfactura,idproducto) VALUES (99,1,99,10,6);
+
+
+
+
 
 -- CONSULTAS
 
@@ -105,7 +155,7 @@ SELECT a.nombre FROM Cliente a LEFT JOIN Factura b ON a.idcliente=b.idcliente
 WHERE  b.preciototal = (SELECT max(preciototal) FROM factura);
 
 -- ¿Qué cliente pago sobre 100 de monto?
-SELECT a.nombre FROM Cliente a LEFT JOIN Factura b ON a.idcliente=b.idcliente
+SELECT DISTINCT(a.nombre) FROM Cliente a LEFT JOIN Factura b ON a.idcliente=b.idcliente
 WHERE  b.preciototal > 100;
 
 -- ¿Cuántos clientes han comprado el producto 6?
