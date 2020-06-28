@@ -35,7 +35,7 @@ WHERE b.nombreactor = 'Harrison Ford';
 
 -- 6. Listar los 10 directores mas populares, indicando su nombre y cuántas películas aparecen en eltop 100.(1 puntos)
 
-SELECT  director , count(director) as CAntidad FROM pelicula GROUP BY director;
+ SELECT  director as directores FROM pelicula WHERE id < 11; 
 
 -- 7. Indicar cuantos actores distintos hay (1 puntos)
 
